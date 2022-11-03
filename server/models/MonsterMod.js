@@ -1,3 +1,7 @@
+// Monster Mods can be present on Monster cards.
+// They modify how combat works for the Monster.
+// (Similar to traits like "flying" or "first strike" in MTG)
+
 const { Schema, model } = require('mongoose');
 
 const MonsterModSchema = new Schema( {
