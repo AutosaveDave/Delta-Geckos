@@ -8,6 +8,10 @@ const MonsterSchema = new Schema( {
     unique: true,
   },
 
+  flavorText: {
+    type: String,
+  },
+
   attack: {
     type: Number,
     required: true,
