@@ -45,13 +45,54 @@ const gameSessionSchema = new Schema( {
     ref: 'Reward',
   } ],
 
-  chat: [ {
+  chatLog: [ {
     from: {
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
     text: {
         type: String,
+    }
+  } ],
+
+  // A record of each round
+  roundLog: [ {
+
+    player: [ {
+        pid: {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        },
+        hand: [ {
+            type: Schema.Types.ObjectId,
+            ref: 'Monster',
+        } ],
+        played: {
+            type: Schema.Types.ObjectId,
+            ref: 'Monster',
+        },
+        survived: {
+            type: Boolean,
+        },
+        won: {
+            type: Boolean,
+        },
+
+    }],
+    // Rewards in play
+    reward: [ {
+        type: Schema.Types.ObjectId,
+        ref: 'Reward',
+    } ],
+    played: [ {
+        type: Schema.Types.ObjectId,
+        ref: 'Monster',
+    } ],
+    survived: [ {
+        type: Boolean,
+    } ],
+    won: {
+        type: Schema.Types.ObjectId,
     }
   } ],
 
