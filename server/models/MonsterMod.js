@@ -29,7 +29,7 @@ const MonsterModSchema = new Schema( {
   },
 
   effectId: {
-    type: Integer,
+    type: Number,
     required: true,
   }
 
