@@ -29,7 +29,7 @@ const CombatModSchema = new Schema( {
   },
 
   effectId: {
-    type: Integer,
+    type: Number,
     required: true,
   }
 
