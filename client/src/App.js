@@ -1,4 +1,4 @@
-import TitleNav from "./components/TitleNav/TitleNav";
+import TitleNav from "./components/TitleNav.js/TitleNav";
 import MonsterCard from "./components/MonsterCard/MonsterCard";
 
 function App() {
