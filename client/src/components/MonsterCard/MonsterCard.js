@@ -1,20 +1,20 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
 export default function MonsterCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 325 }}>
       <CardActionArea>
-        <Typography>TITLE</Typography> 
+        <Typography>Oscar The Marcus</Typography>
         <CardMedia
           component="img"
-          height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          height="180"
+          image="\assets\characters\2.png"
+          alt="monster 2"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
