@@ -5,9 +5,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <TitleNav position='absolute'></TitleNav>
-        <MonsterCard></MonsterCard>
+        <TitleNav position="absolute"></TitleNav>
       </header>
+      <>
+        <MonsterCard></MonsterCard>
+        <MonsterCard></MonsterCard>
+      </>
     </div>
   );
 }
