@@ -1,4 +1,4 @@
-import TitleNav from "./components/TitleNav/TitleNav";
+import TitleNav from "./components/TitleNav.js/TitleNav";
 import MonsterCard from "./components/MonsterCard/MonsterCard";
 
 function App() {
@@ -7,10 +7,6 @@ function App() {
       <header className="App-header">
         <TitleNav position="absolute"></TitleNav>
       </header>
-      <>
-        <MonsterCard></MonsterCard>
-        <MonsterCard></MonsterCard>
-      </>
     </div>
   );
 }
