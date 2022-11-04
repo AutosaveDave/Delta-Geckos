@@ -7,10 +7,6 @@ function App() {
       <header className="App-header">
         <TitleNav position="absolute"></TitleNav>
       </header>
-      <>
-        <MonsterCard></MonsterCard>
-        <MonsterCard></MonsterCard>
-      </>
     </div>
   );
 }
