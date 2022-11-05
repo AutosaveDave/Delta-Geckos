@@ -25,7 +25,9 @@ export default function MonsterCard() {
           <br></br>
             He'll get'cha.
           </Typography>
-
+          <Typography sx={{ fontSize: 10, marginTop: 2, marginLeft: 11 }}>
+            A/D
+          </Typography>  
         </CardContent>
       </CardActionArea>
     </Card>
