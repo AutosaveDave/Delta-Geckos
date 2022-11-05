@@ -8,17 +8,23 @@ import PanToolIcon from "@mui/icons-material/PanTool";
 function Arena() {
   return (
     <Grid container spacing={9}>
-      <Grid item xs={7.25}>
-        <Paper sx={{ fontSize: 14, marginLeft: 13, marginTop: 1 }}>enemy card</Paper>
-      </Grid>
+      {/* <Grid item xs={7.25}sm={6.25}> */}
+        <Paper sx={{ marginLeft: 30, marginTop: 16 }}>
+          <MonsterCard/>
+          </Paper>
+      {/* </Grid> */}
       <Grid item xs={12}>
         <Paper>Gold</Paper>
       </Grid>
       <Grid item xs={5}>
-        <Paper sx={{ fontSize: 16, marginLeft: 1}}>your card</Paper>
+      <Paper sx={{ marginLeft: 30, marginTop: 16 }}>
+          <MonsterCard/>
+          </Paper>
       </Grid>
       <Grid item xs={12}>
-        <Paper sx={{ marginBottom: 3}} >your hand</Paper>
+        <Paper sx={{ marginBottom: 3}} >
+          <PanToolIcon></PanToolIcon>
+        </Paper>
       </Grid>
     </Grid>
   );
