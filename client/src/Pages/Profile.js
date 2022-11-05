@@ -4,27 +4,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import GamesPlayed from "../components/GamesPlayed";
+import UserInfo from "../components/UserInfo";
 
 function Profile() {
-  return (
-    <div>
-    <Card sx={{ maxWidth: 345}}>
-      <CardContent>
-        <Typography>
-          Username
-        </Typography>
-        <CardMedia
-          component="img"
-          height="152"
-          image="\assets\characters\2.png"
-          alt="monster 2"
-        />
-        
-
-      </CardContent>
-    </Card>
-    </div>
-  )
+  return <GamesPlayed />;
+  <UserInfo />;
 }
 
-export default Profile
+export default Profile;
