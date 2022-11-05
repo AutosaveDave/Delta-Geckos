@@ -4,7 +4,7 @@
 
 const { Schema, model } = require('mongoose');
 
-const CombatModSchema = new Schema( {
+const combatModSchema = new Schema( {
 
   name: {
     type: String,
@@ -35,6 +35,6 @@ const CombatModSchema = new Schema( {
 
 } );
 
-const CombatMod = model('CombatMod', CombatModSchema);
+const CombatMod = model('CombatMod', combatModSchema);
 
 module.exports = CombatMod;

@@ -1,101 +1,37 @@
 const { Schema, model } = require('mongoose');
+const Player = require('./Player');
+const ChatLog = require('./ChatLog');
+const RoundLog = require('./RoundLog');
 
 const gameSessionSchema = new Schema( {
 
-  player: [ {
+  player: [Player.schema],
 
-    pid: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    rewards: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Reward',
-    } ],
-
-    hand: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Monster',
-    } ],
-
-    played: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Monster',
-    } ],
-
-    discarded: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Monster',
-    } ],
-
-  } ],
-
+  // The deck of monster cards
   deck: [ {
     type: Schema.Types.ObjectId,
     ref: 'Monster',
   } ],
 
+  // The deck of reward cards
   rewardsDeck: [ {
     type: Schema.Types.ObjectId,
     ref: 'Reward',
   } ],
 
+  // Rewards currently in play
   rewardsInPlay: [ {
     type: Schema.Types.ObjectId,
     ref: 'Reward',
   } ],
 
-  chatLog: [ {
-    from: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    },
-    text: {
-        type: String,
-    }
-  } ],
+  // Chat messages
+  chatLog: [ChatLog.schema],
 
   // A record of each round
-  roundLog: [ {
+  roundLog: [RoundLog.schema],
 
-    player: [ {
-        pid: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-        },
-        hand: [ {
-            type: Schema.Types.ObjectId,
-            ref: 'Monster',
-        } ],
-        played: {
-            type: Schema.Types.ObjectId,
-            ref: 'Monster',
-        },
-        survived: {
-            type: Boolean,
-        },
-        won: {
-            type: Boolean,
-        },
-
-    }],
-    // Rewards in play
-    reward: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Reward',
-    } ],
-    played: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'Monster',
-    } ],
-    survived: [ {
-        type: Boolean,
-    } ],
-    won: {
-        type: Schema.Types.ObjectId,
-    }
-  } ],
-
+  // Whether the game is still in progress
   ongoing: {
     type: Boolean,
     default: true,
