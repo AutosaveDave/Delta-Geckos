@@ -19,9 +19,6 @@ export default function MonsterCard() {
           alt="monster 2"
         />
         <CardContent>
-          {/* <Typography sx={{ fontSize: 12 }} gutterBottom variant="h5" component="div">
-            Lizard
-          </Typography> */}
           <Typography sx={{ fontSize: 12, marginTop: -6 }} variant="body2" color="text.secondary">
           <br></br>
             Watch out.
