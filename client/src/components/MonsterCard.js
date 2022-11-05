@@ -4,27 +4,31 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
-// import "./style/card.css"
+import "../style/card.css"
 
 export default function MonsterCard() {
   return (
-    <Card sx={{ maxWidth: 325 }}>
+    <Card  sx={{ width: 142, height: 200 }}
+    >
       <CardActionArea>
-        <Typography>Oscar The Marcus</Typography>
+        <Typography sx={{ fontSize: 13, marginLeft: 1, marginBottom: -3 }}>Oscar The Marcus</Typography>
         <CardMedia
           component="img"
-          height="180"
+          height="152"
           image="\assets\characters\2.png"
           alt="monster 2"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          {/* <Typography sx={{ fontSize: 12 }} gutterBottom variant="h5" component="div">
             Lizard
+          </Typography> */}
+          <Typography sx={{ fontSize: 12, marginTop: -6 }} variant="body2" color="text.secondary">
+          <br></br>
+            Watch out.
+          <br></br>
+            He'll get'cha.
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography>
+
         </CardContent>
       </CardActionArea>
     </Card>

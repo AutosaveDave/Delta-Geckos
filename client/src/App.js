@@ -5,7 +5,7 @@ import Profile from "./Pages/Profile";
 import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
-import MonsterCard from "./components/MonsterCard";
+
 
 function App() {
   return (
