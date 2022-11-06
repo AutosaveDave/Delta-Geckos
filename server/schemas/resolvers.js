@@ -54,6 +54,14 @@ const resolvers = {
       return CombatMod.findOne( { _id: findCombatModId } );
     },
     
+    playerView: async(parent, { gameId, playerId }, context ) => {
+      const playerInfo = await GameSession.findById( { gameId } ).player.findOne( { pid: playerId } );
+      const opponentInfo = await GameSession.findById( { gameId } ).player.findOne( { pid: { $ne:playerId } } ).select("pid rewards played discarded");
+      const arenaInfo = await GameSession.findById( { gameId } ).select("rewardsInPlay chatLog roundLog ongoing")
+        // opponentPlayed: Boolean
+        // rewardsInPlay: [ID]
+        // opponentRewards: [ID]
+    }
   },
 
   Mutation: {

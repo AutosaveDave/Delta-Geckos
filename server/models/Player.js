@@ -24,10 +24,10 @@ const playerSchema = new Schema({
 
     // Card played by player this round
     // If null, player has not selected a card
-    played: [ {
+    played:  {
         type: Schema.Types.ObjectId,
         ref: 'Monster',
-    } ],
+    },
 
     // Player's discard pile at start of round
     discarded: [ {

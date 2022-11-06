@@ -7,12 +7,24 @@ const typeDefs = gql`
     text: String
   }
 
+   
   type Player {
+    pid: ID!
+    rewards: [ID]
+    hand: [ID]
+    played: ID
+    discarded: [ID]
+  }
+
+  type PlayerView {
     pid: ID!
     rewards: [ID]
     hand: [ID]
     played: [ID]
     discarded: [ID]
+    opponentPlayed: Boolean
+    rewardsInPlay: [ID]
+    opponentRewards: [ID]
   }
 
   type RoundLog {
@@ -40,6 +52,7 @@ const typeDefs = gql`
     friends: [User]
     gameSessions: [GameSession]
     admin: Boolean!
+    loggedIn: Boolean!
   }
 
   type Auth {
@@ -90,7 +103,13 @@ const typeDefs = gql`
   }
 
   type Query {
-    user()
+    monsters: [Monster]
+    monsterMods: [MonsterMod]
+    rewards: [Reward]
+    combatMods: [CombatMod]
+    games(_id:ID!): [GameSession]
+    friends(_id:ID): [User]
+    playerView(_id:ID): PlayerView
   }
 
   type Mutation {
