@@ -18,9 +18,12 @@ const typeDefs = gql`
 
   type PlayerView {
     pid: ID!
+    pUsername: String
+    oppId: ID
+    oppUsername: String
     rewards: [ID]
     hand: [ID]
-    played: [ID]
+    played: ID
     discarded: [ID]
     opponentPlayed: Boolean
     rewardsInPlay: [ID]
@@ -49,70 +52,82 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     password: String!
-    friends: [User]
-    gameSessions: [GameSession]
+    friends: [ID]
+    gameSessions: [ID]
     admin: Boolean!
     loggedIn: Boolean!
   }
 
   type Auth {
-    token: ID
+    token: ID!
     user: User
   }
 
   type CombatMod {
     _id: ID!
     name: String
-    image: Number
-    color: Number
+    image: String
+    color: String
     description: String
-    effectId: Number
+    effectId: String
   }
 
   type MonsterMod {
     _id: ID!
     name: String
-    image: Number
-    color: Number
+    image: String
+    color: String
     description: String
-    effectId: Number
+    effectId: String
   }
 
   type Monster {
     _id: ID!
     name: String
     flavorText: String
-    attack: Number
-    defense: Number
+    attack: String
+    defense: String
     mods: [MonsterMod]
-    image: Number
-    background: Number
-    color: Number
-    texture: Number
+    image: String
+    background: String
+    color: String
+    texture: String
   }
 
   type Reward {
     _id: ID!
     name: String
-    gold: Number
+    gold: String
     mods: [CombatMod]
-    image: Number
-    background: Number
-    color: Number
-    texture: Number
+    image: String
+    background: String
+    color: String
+    texture: String
+  }
+
+  input LoginInfo {
+    username: String!
+    password: String!
   }
 
   type Query {
+    users: [User]
+    userByName: User
+    userById: User
+    gamesOngoing: [GameSession]
+    gamesByUserId: [GameSession]
     monsters: [Monster]
+
     monsterMods: [MonsterMod]
     rewards: [Reward]
     combatMods: [CombatMod]
-    games(_id:ID!): [GameSession]
-    friends(_id:ID): [User]
-    playerView(_id:ID): PlayerView
+    playerView(gameId: ID!, _id:ID!): PlayerView
   }
 
   type Mutation {
+    addUser(input: LoginInfo): Auth
+    login(input: LoginInfo!): Auth
+    newGameSession(user: ID!, opp: ID): String
 
   }
 `;
