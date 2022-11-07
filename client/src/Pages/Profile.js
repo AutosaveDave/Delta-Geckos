@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Paper from "@mui/material/Paper";
-import Box from "@mui/material/Box";
 import GamesPlayed from "../components/GamesPlayed";
 import UserInfo from "../components/UserInfo";
 
@@ -16,7 +15,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function RowAndColumnSpacing() {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Item className="user_info">
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         <Grid sm={6}>
           <GamesPlayed />
@@ -25,6 +24,6 @@ export default function RowAndColumnSpacing() {
           <UserInfo />
         </Grid>
       </Grid>
-    </Box>
+    </Item>
   );
 }

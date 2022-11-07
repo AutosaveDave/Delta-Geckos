@@ -1,16 +1,11 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
-
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import { Grid } from "@mui/material";
 
 export default function GamesPlayed() {
-  return <Item>Games Played</Item>;
+  return (
+    <Grid className="gamesPlayedColumn">
+      <Grid className="gamePlayedAmount">Games Played</Grid>
+      <Grid className="gameOpponents">Opponent / Date</Grid>
+    </Grid>
+  );
 }

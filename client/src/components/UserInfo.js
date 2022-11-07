@@ -1,25 +1,25 @@
+import { Grid } from "@mui/material";
 import * as React from "react";
-import "./styles.css";
-import { makeStyles } from "@material-ui/core";
-import { Typography } from "@mui/material";
+import Avatar from "@mui/material/Avatar";
+import Stack from "@mui/material/Stack";
+import "../style/profile.css";
 
-const styles = makeStyles((theme) => ({
-  username: {
-    height: 300,
-    backgroundColor: "yellow",
-    marginBottom: "5px",
-    border: "1px solid black",
-  },
-  picture: {
-    height: 300,
-    backgroundColor: "green",
-    marginBottom: "5px",
-    border: "1px solid black",
-  },
-  balances: {
-    [theme.breakpoints.up("sm")]: {
-      display: "flex",
-      columnGap: "5px",
-    },
-  },
- 
+export default function UserInfo() {
+  return (
+    <Grid className="userInfoColumn">
+      <Grid className="username">username</Grid>
+
+      <Grid className="picture">
+        <Stack direction="row">
+          <Avatar className="avatar" src="" sx={{ width: 150, height: 150 }} />
+        </Stack>
+      </Grid>
+
+      <Grid className="balances">
+        <Grid className="gold_balance">gold balance</Grid>
+
+        <Grid className="win_loss">wins/losses</Grid>
+      </Grid>
+    </Grid>
+  );
+}
