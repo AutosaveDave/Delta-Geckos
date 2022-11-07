@@ -1,22 +1,25 @@
 import * as React from "react";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
+import "./styles.css";
+import { makeStyles } from "@material-ui/core";
 import { Typography } from "@mui/material";
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
-
-export default function UserInfo() {
-  return (
-    <>
-      <>
-        <Item>User Information</Item>
-      </>
-    </>
-  );
-}
+const styles = makeStyles((theme) => ({
+  username: {
+    height: 300,
+    backgroundColor: "yellow",
+    marginBottom: "5px",
+    border: "1px solid black",
+  },
+  picture: {
+    height: 300,
+    backgroundColor: "green",
+    marginBottom: "5px",
+    border: "1px solid black",
+  },
+  balances: {
+    [theme.breakpoints.up("sm")]: {
+      display: "flex",
+      columnGap: "5px",
+    },
+  },
+ 
