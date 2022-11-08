@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,6 +14,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 const theme = createTheme();
 
 export default function Login() {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  console.log(values);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -56,10 +63,14 @@ export default function Login() {
               name="username"
               autoComplete="username"
               autoFocus
+              onChange={(e) => setValues({ ...values, email: e.target.value })}
             />
             <TextField
               margin="normal"
               required
+              onChange={(e) =>
+                setValues({ ...values, password: e.target.value })
+              }
               fullWidth
               name="password"
               label="Password"
