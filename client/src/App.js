@@ -6,7 +6,6 @@ import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
 
-
 function App() {
   return (
     <div className="App">
@@ -16,7 +15,7 @@ function App() {
           <TitleNav />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/LoginSignin" element={<LoginSignup />} />
+            <Route path="/LoginSignup" element={<LoginSignup />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Arena" element={<Arena />} />
           </Routes>
