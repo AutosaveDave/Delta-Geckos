@@ -5,17 +5,22 @@ import Arena from "./Pages/Arena";
 import Profile from "./Pages/Profile";
 
 
-
 function App() {
   return (
     <div className="App">
-       <ResponsiveAppBar/>
-     <Routes>
-      <Route path ="/" element ={<Arena/>}/>
-      <Route path ="/" element ={<LoginSignup/>}/>
-      <Route path ="/" element ={<Profile/>}/>
-     </Routes>
-        
+      <header className="App-header">
+        {/* <TitleNav position="absolute"></TitleNav> */}
+        <Router>
+          <TitleNav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/LoginSignup" element={<LoginSignup />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Arena" element={<Arena />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </header>
     </div>
   );
 }
