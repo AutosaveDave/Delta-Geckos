@@ -110,9 +110,14 @@ const typeDefs = gql`
     password: String!
   }
 
+  input NewGameInfo {
+    username: String!
+    opponent: String
+  }
+
   type Query {
     users: [User]
-    userByName: User
+    userByName(username: String): User
     userById: User
     gamesOngoing: [GameSession]
     gamesByUserId: [GameSession]
@@ -125,9 +130,9 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(input: LoginInfo): Auth
+    addUser(input: LoginInfo!): Auth
     login(input: LoginInfo!): Auth
-    newGameSession(user: ID!, opp: ID): String
+    newGameSession(input: NewGameInfo!): GameSession
 
   }
 `;
