@@ -1,9 +1,10 @@
 const { User, Monster, Reward, GameSession, MonsterMod, CombatMod } = require('../models');
-
+const { AuthError } = require('apollo-server-express');
+const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find();
+      return User.find({});
     },
 
     userByName: async (parent, { findUsername } ) => {
@@ -26,38 +27,89 @@ const resolvers = {
       return Monster.find();
     },
 
-    monsterById: async (parent, { findMonsterId } ) => {
-      return Monster.findOne( { _id: findMonsterId } );
-    },
-
     rewards: async() => {
       return Reward.find();
-    },
-
-    rewardById: async (parent, { findRewardId } ) => {
-      return Reward.findOne( { _id: findRewardId } );
     },
 
     monsterMods: async () => {
       return MonsterMod.find();
     },
 
-    monsterModById: async(parent, { findMonsterModId } ) => {
-      return MonsterMod.findOne( { _id: findMonsterModId } );
-    },
-
     combatMods: async () => {
       return CombatMod.find();
     },
-
-    combatModById: async(parent, { findCombatModId } ) => {
-      return CombatMod.findOne( { _id: findCombatModId } );
-    },
     
+    playerView: async(parent, { gameId, playerId }, context ) => {
+      const playerInfo = await GameSession.findById(gameId).player.findOne( { pid: playerId } );
+      const opponentInfo = await GameSession.findById(gameId).player.findOne( { pid: { $ne: playerId } } ).select("pid rewards played discarded");
+      let oppPlayed = false;
+      if(opponentInfo.played) {
+        oppPlayed = true;
+      }
+      const arenaInfo = await GameSession.findById(gameId).select("rewardsInPlay chatLog roundLog ongoing");
+      const me = await User.findById(playerInfo.pid).username;
+      const opp = await User.findById(opponentInfo.pid).username;
+      return { 
+        pid: playerInfo.pid,
+        pUsername: me,
+        oppId: opponentInfo.pid,
+        oppUsername: opp,
+        rewards: playerInfo.rewards, 
+        hand: playerInfo.hand,
+        played: playerInfo.played,
+        discarded: playerInfo.discarded,
+        opponentPlayed: oppPlayed,
+        rewardsInPlay: arenaInfo.rewardsInPlay,
+        opponentRewards: opponentInfo.rewards
+      }
+    }
   },
 
   Mutation: {
-    
+    addUser: async (parent, args ) => {
+      const user = await User.create({ 
+        username: args.input.username,
+        password: args.input.password,
+        admin: false, 
+        loggedIn: false
+      });
+      console.log(user);
+      const token = await signToken( user );
+      console.log("token");
+      console.log(token);
+      return { token, user };
+    },
+    newGameSession: async (parent, { user, opp }) => {
+      // if (user) {
+      //   const order = new Order({ products });
+
+      //   await User.findByIdAndUpdate(user.id, {
+      //     $push: { orders: order },
+      //   });
+
+      //   return order;
+      // }
+      return {nothing: '0'};
+
+      //throw new AuthenticationError('Not logged in');
+    },
+    login: async (parent, { username, password }) => {
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
   },
 };
 

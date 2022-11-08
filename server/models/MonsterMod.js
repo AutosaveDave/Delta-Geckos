@@ -13,12 +13,12 @@ const MonsterModSchema = new Schema( {
   },
 
   image: {
-    type: Number,
+    type: String,
     required: true,
   },
 
   color: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
@@ -29,7 +29,7 @@ const MonsterModSchema = new Schema( {
   },
 
   effectId: {
-    type: Number,
+    type: String,
     required: true,
   }
 

@@ -13,12 +13,12 @@ const MonsterSchema = new Schema( {
   },
 
   attack: {
-    type: Number,
+    type: String,
     required: true,
   },
 
   defense: {
-    type: Number,
+    type: String,
     required: true,
   },
 
@@ -28,25 +28,25 @@ const MonsterSchema = new Schema( {
   } ],
 
   image: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   background: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   color: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   texture: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },

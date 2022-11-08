@@ -26,6 +26,11 @@ const userSchema = new Schema({
         required: true,
         default: false,
     },
+    loggedIn: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
 
 });
 
@@ -39,7 +44,7 @@ userSchema.pre('save', async function (next) {
   });
 
 userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
+    return await bcrypt.compare(password, this.password);
   };
 
 const User = model('User', userSchema);

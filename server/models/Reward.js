@@ -8,7 +8,7 @@ const RewardSchema = new Schema( {
   },
 
   gold: {
-    type: Number,
+    type: String,
     required: true,
     default: 1,
   },
@@ -19,25 +19,25 @@ const RewardSchema = new Schema( {
   } ],
 
   image: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   background: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   color: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
 
   texture: {
-    type: Number,
+    type: String,
     required: true,
     default: 0,
   },
