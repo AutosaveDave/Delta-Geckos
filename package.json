@@ -14,9 +14,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.1.0",
+    "web-vitals": "^3.0.4"
   },
   "dependencies": {
-    "@mui/icons-material": "^5.10.9"
+    "@mui/icons-material": "^5.10.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

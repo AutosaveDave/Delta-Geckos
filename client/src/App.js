@@ -1,10 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home.js";
-import LoginSignup from "./Pages/LoginSignup.js";
+import { Route, Routes } from "react-router-dom";
+import ResponsiveAppBar from "./components/TitleNav"
+import LoginSignup from "./Pages/LoginSignup";
+import Arena from "./Pages/Arena";
 import Profile from "./Pages/Profile";
-import Arena from "./Pages/Arena.js";
-import TitleNav from "./components/TitleNav";
-import Footer from "./components/Footer";
+
 
 function App() {
   return (
