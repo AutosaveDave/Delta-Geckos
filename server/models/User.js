@@ -17,10 +17,25 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     } ],
+    friendInvites: [ {
+        type: String,
+    } ],
+    sentFriendInvites: [ {
+        type: String,
+    } ],
     gameSessions: [ {
         type: Schema.Types.ObjectId,
         ref: 'GameSession',
     } ],
+    gameInvites: [ {
+        type: String,
+    } ],
+    sentGameInvites: [ {
+        type: String,
+    } ],
+    avatar: {
+        type: String,
+    },
     admin: {
         type: Boolean,
         required: true,

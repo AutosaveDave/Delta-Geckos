@@ -53,7 +53,12 @@ const typeDefs = gql`
     username: String!
     password: String!
     friends: [ID]
+    friendInvites: [String]
+    sentFriendInvites: [String]
     gameSessions: [ID]
+    gameInvites: [String]
+    sentGameInvites: [String]
+    avatar: String
     admin: Boolean!
     loggedIn: Boolean!
   }
@@ -115,6 +120,11 @@ const typeDefs = gql`
     opponent: String
   }
 
+  input AddFriendInfo {
+    username: String!
+    newFriend: String!
+  }
+
   type Query {
     users: [User]
     userByName(username: String): User
@@ -132,6 +142,8 @@ const typeDefs = gql`
   type Mutation {
     addUser(input: LoginInfo!): Auth
     login(input: LoginInfo!): Auth
+    inviteFriend(input: AddFriendInfo!): String
+    acceptFriend(input: AddFriendInfo!): String
     newGameSession(input: NewGameInfo!): GameSession
 
   }

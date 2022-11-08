@@ -79,6 +79,25 @@ const resolvers = {
       console.log(token);
       return { token, user };
     },
+
+    inviteFriend: async ( parent, args ) => {
+      const friend = await User.updateOne( 
+        { username: args.input.newFriend, friendInvites: {$ne: args.input.username}, sentFriendInvites: {$ne: args.input.username} },
+        { $push: { friendInvites: [args.input.username] } }, { new: true } );
+      const user = await User.updateOne( 
+        { username: args.input.username, friendInvites: {$ne: args.input.newFriend}, sentFriendInvites: {$ne: args.input.newFriend} },
+        { $push: { sentFriendInvites: [args.input.newFriend] } }, { new: true } );
+      if( friend && user ) {
+        return "FRIEND REQUEST SENT!"
+      }
+      return "Friend request failed!"
+    },
+    acceptFriend: async ( parent, args ) => {
+      await User.updateOne(
+        { username: args.input.newFriend }
+      )
+    }
+
     newGameSession: async (parent, { user, opp }) => {
       // if (user) {
       //   const order = new Order({ products });
@@ -93,9 +112,11 @@ const resolvers = {
 
       //throw new AuthenticationError('Not logged in');
     },
+
     login: async (parent, args) => {
       console.log(args);
-      const user = await User.findOne( { username: args.input.username } );
+      const user = await User.findOneAndUpdate( { username: args.input.username }, { loggedIn: true }, { new: true } );
+
       console.log(user);
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
@@ -106,7 +127,6 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-
       const token = signToken(user);
 
       return { token, user };
