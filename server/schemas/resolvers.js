@@ -1,5 +1,5 @@
 const { User, Monster, Reward, GameSession, MonsterMod, CombatMod } = require('../models');
-const { AuthError } = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
@@ -93,14 +93,15 @@ const resolvers = {
 
       //throw new AuthenticationError('Not logged in');
     },
-    login: async (parent, { username, password }) => {
-      const user = await User.findOne({ username });
-
+    login: async (parent, args) => {
+      console.log(args);
+      const user = await User.findOne( { username: args.input.username } );
+      console.log(user);
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(args.input.password);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
