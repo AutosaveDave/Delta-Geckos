@@ -13,20 +13,11 @@ import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
 
-
-import {
-  createHttpLink,
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-
-const httpLink= createHttpLink({
+const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
-const authLink = setContext( (_, { headers }) => {
+const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
 
   return {
@@ -38,7 +29,6 @@ const authLink = setContext( (_, { headers }) => {
 });
 
 const client = new ApolloClient({
-
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
 
   link: authLink.concat(httpLink),
