@@ -13,7 +13,7 @@ import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
 
-const httpLink = createHttpLink({
+const httpLink= createHttpLink({
   uri: "/graphql",
 });
 
