@@ -6,22 +6,53 @@ import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
 
+import {
+  createHttpLink,
+  ApolloLink,
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+
+const httpLink= createHttpLink({
+  uri: "/graphql",
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Router>
-          <TitleNav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/LoginSignup" element={<LoginSignup />} />
-            <Route path="/Profile" element={<Profile />} />
-            <Route path="/Arena" element={<Arena />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <header className="App-header">
+          <Router>
+            <TitleNav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/LoginSignup" element={<LoginSignup />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/Arena" element={<Arena />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </header>
+      </div>
+    </ApolloProvider>
   );
 }
 

@@ -10,18 +10,40 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-// import { useMutation } from "@apollo/client";
-// import { LOGIN_USER } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from '../utils/auth';
 
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get("username"),
-      password: data.get("password"),
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+      Auth.login(data.login.token);
+    } catch (event) {
+      console.error(event);
+    }
+
+    // clear form values
+    setFormState({
+      username: '',
+      password: '',
     });
   };
 
@@ -57,6 +79,8 @@ export default function Login() {
               label="Username"
               name="username"
               autoComplete="username"
+              value={formState.username}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -67,6 +91,8 @@ export default function Login() {
               label="Password"
               type="password"
               id="password"
+              value={formState.password}
+              onChange={handleChange}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -77,11 +103,13 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="contained"
+              style={{ cursor: 'pointer' }}
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
             </Button>
           </Box>
+
         </Box>
       </Container>
     </ThemeProvider>
