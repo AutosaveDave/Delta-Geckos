@@ -16,7 +16,7 @@ import Auth from '../utils/auth';
 
 const theme = createTheme();
 
-export default function Login() {
+export default function Login(props) {
   const [formState, setFormState] = useState({ username: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -31,20 +31,26 @@ export default function Login() {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    console.log("formState follows:");
+    console.log(formState);
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
+      console.log('data (Login.js line 39) follows:');
+      console.log(data);
       Auth.login(data.login.token);
     } catch (event) {
       console.error(event);
     }
 
     // clear form values
-    setFormState({
-      username: '',
-      password: '',
-    });
+    // setFormState({
+    //   username: '',
+    //   password: '',
+    // });
   };
 
   return (
