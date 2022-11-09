@@ -93,7 +93,7 @@ export default function Signup(props) {
                       label="Username"
                       name="username"
                       autoComplete="username"
-                      value={formState.name}
+                      value={formState.username}
                       onChange={handleChange}
                     />
                   </Grid>
