@@ -13,15 +13,6 @@ import Arena from "./Pages/Arena.js";
 import TitleNav from "./components/TitleNav";
 import Footer from "./components/Footer";
 
-
-import {
-  createHttpLink,
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-} from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
-
 const httpLink= createHttpLink({
   uri: "/graphql",
 });
