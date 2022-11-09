@@ -21,8 +21,7 @@ const theme = createTheme();
 
 export default function Signup(props) {
   const [formState, setFormState] = useState({
-    name: "",
-    email: "",
+    username: "",
     password: "",
   });
   const [addProfile, { error, data }] = useMutation(ADD_USER);
