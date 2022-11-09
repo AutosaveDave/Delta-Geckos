@@ -63,9 +63,14 @@ const typeDefs = gql`
     loggedIn: Boolean!
   }
 
+  type UserAuthObj {
+    username: String!
+    _id: ID!
+  }
+
   type Auth {
     token: ID!
-    user: User
+    user: UserAuthObj
   }
 
   type CombatMod {
@@ -140,8 +145,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(input: LoginInfo!): Auth
-    login(input: LoginInfo!): Auth
+    addUser(username: String!, password:String!): Auth
+    login(username: String!, password:String!): Auth
     inviteFriend(input: AddFriendInfo!): String
     acceptFriend(input: AddFriendInfo!): String
     newGameSession(input: NewGameInfo!): GameSession

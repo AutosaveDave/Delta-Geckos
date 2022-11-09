@@ -18,12 +18,12 @@ db.once('open', async () => {
   await GameSession.deleteMany({});
 
   // bulk create each model
-  // const users = await User.insertMany(userData);
-  // const monsters = await Monster.insertMany(monsterData);
-  // const monsterMods = await MonsterMods.insertMany(monsterModData);
-  // const rewards = await Reward.insertMany(rewardData);
-  // const combatMods = await CombatMod.insertMany(combatModData);
-  // const gameSessions = await GameSession.insertMany(gameSessionData);
+  const users = await User.insertMany(userData);
+  const monsters = await Monster.insertMany(monsterData);
+  const monsterMods = await MonsterMods.insertMany(monsterModData);
+  const rewards = await Reward.insertMany(rewardData);
+  const combatMods = await CombatMod.insertMany(combatModData);
+  const gameSessions = await GameSession.insertMany(gameSessionData);
 
 //   for (newClass of classes) {
 //     // randomly add each class to a school

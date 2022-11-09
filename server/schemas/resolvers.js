@@ -88,15 +88,15 @@ const resolvers = {
         { username: args.input.username, friendInvites: {$ne: args.input.newFriend}, sentFriendInvites: {$ne: args.input.newFriend} },
         { $push: { sentFriendInvites: [args.input.newFriend] } }, { new: true } );
       if( friend && user ) {
-        return "FRIEND REQUEST SENT!"
+        return "FRIEND REQUEST SENT!";
       }
-      return "Friend request failed!"
+      return "Friend request failed!";
     },
     acceptFriend: async ( parent, args ) => {
       await User.updateOne(
         { username: args.input.newFriend }
       )
-    }
+    },
 
     newGameSession: async (parent, { user, opp }) => {
       // if (user) {
@@ -115,15 +115,18 @@ const resolvers = {
 
     login: async (parent, args) => {
       console.log(args);
-      const user = await User.findOneAndUpdate( { username: args.input.username }, { loggedIn: true }, { new: true } );
-
+      const user = await User.findOneAndUpdate(
+        { username: args.username }, { loggedIn: true }, { new: true } );
+        // .select("username _id");
+      console.log("user value follows:");
       console.log(user);
       if (!user) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const correctPw = await user.isCorrectPassword(args.input.password);
-
+      const correctPw = await user.isCorrectPassword(args.password);
+      console.log("correctPw value follows:");
+      console.log(correctPw);
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }

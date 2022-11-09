@@ -16,7 +16,7 @@ export default function MonsterCard() {
         <CardMedia
           component="img"
           height="152"
-          image="\assets\characters\2.png"
+          image="/assets/characters/2.png"
           alt="monster 2"
         />
         <CardContent>
