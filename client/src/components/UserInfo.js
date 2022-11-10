@@ -1,12 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
-
-import { ADD_SKILL } from "../utils/mutations";
-
-import Auth from "../utils/auth";
-
 import { Grid } from "@mui/material";
+import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 import "../style/Profile.css";

@@ -11,8 +11,8 @@ export const ADD_USER = gql`
   }
 `;
 // export const ADD_SKILL = gql`
-//   mutation addSkill($profileId: ID!, $skill: String!) {
-//     addSkill(profileId: $profileId, skill: $skill) {
+//   mutation addSkill($userInfo: ID!, $skill: String!) {
+//     addSkill(userInfo: $userInfo, skill: $skill) {
 //       _id
 //       name
 //       skills
@@ -20,15 +20,15 @@ export const ADD_USER = gql`
 //   }
 // `;
 export const LOGIN_USER = gql`
-mutation login($username: String!, $password: String!) {
-  login(username: $username, password: $password) {
-    user {
-      username
-      _id
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      user {
+        username
+        _id
+      }
+      token
     }
-    token
   }
-}
 `;
 // export const REMOVE_SKILL = gql`
 //   mutation removeSkill($skill: String!) {

@@ -19,10 +19,10 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Profile = () => {
-  const { profileId } = useParams();
+  const { userInfo } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_PROFILE, {
-    variables: { profileId: profileId },
+    variables: { userInfo: userInfo },
   });
 
   const profile = data?.profile || {};
