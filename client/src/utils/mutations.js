@@ -10,15 +10,9 @@ export const ADD_USER = gql`
     }
   }
 `;
-// export const ADD_SKILL = gql`
-//   mutation addSkill($userInfo: ID!, $skill: String!) {
-//     addSkill(userInfo: $userInfo, skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+
+
+
 export const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
