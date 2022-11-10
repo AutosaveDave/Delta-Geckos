@@ -11,8 +11,8 @@ export const QUERY_PROFILES = gql`
 `;
 
 export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($username: STRING!) {
-    userByName(username: $username) {
+  query singleProfile($userInfo: STRING!) {
+    userByName(userInfo: $userInfo) {
       username
       sentGameInvites
       sentFriendInvites

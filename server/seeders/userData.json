@@ -1,1 +1,65 @@
-[{}]
+[
+  {
+      "username": "Dave1000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave2000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave3000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave4000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave5000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave6000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave7000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave8000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  },
+  {
+      "username": "Dave9000",
+      "password": "12345678",
+      "admin": false,
+      "loggedIn": false,
+      "avatar": "00"
+  }
+]
