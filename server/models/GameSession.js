@@ -37,6 +37,11 @@ const gameSessionSchema = new Schema( {
     default: true,
   },
 
+  openGame: {
+    type: Boolean,
+    default: false,
+  }
+
 } );
 
 const GameSession = model('GameSession', gameSessionSchema);

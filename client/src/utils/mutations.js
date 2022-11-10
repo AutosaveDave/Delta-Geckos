@@ -10,15 +10,15 @@ export const ADD_USER = gql`
     }
   }
 `;
-// export const ADD_SKILL = gql`
-//   mutation addSkill($profileId: ID!, $skill: String!) {
-//     addSkill(profileId: $profileId, skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+export const SEND_FRIEND_REQUEST = gql`
+  mutation sendFriendRequest($username: String!, $newFriend: String!) {
+    addSkill(username: $username, newFriend: $newFriend) {
+      _id
+      name
+      skills
+    }
+  }
+`;
 export const LOGIN_USER = gql`
 mutation login($username: String!, $password: String!) {
   login(username: $username, password: $password) {
