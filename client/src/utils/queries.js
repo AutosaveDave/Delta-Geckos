@@ -11,11 +11,18 @@ export const QUERY_PROFILES = gql`
 `;
 
 export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($profileId: ID!) {
-    profile(profileId: $profileId) {
+  query singleProfile($username: STRING!) {
+    userByName(username: $username) {
+      username
+      sentGameInvites
+      sentFriendInvites
+      gameInvites
+      gameSessions
+      friends
+      friendInvites
+      avatar
+      admin
       _id
-      name
-      skills
     }
   }
 `;

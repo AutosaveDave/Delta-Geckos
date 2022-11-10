@@ -7,12 +7,12 @@ const resolvers = {
       return User.find({});
     },
 
-    userByName: async (parent, { findUsername } ) => {
-      return User.findOne( { username: findUsername } );
+    userByName: async (parent, args ) => {
+      return User.findOne( { username: args.username } );
     },
 
-    userById: async (parent, { findUserId } ) => {
-      return User.findOne( { _id: findUserId } );
+    userById: async (parent, args ) => {
+      return User.findOne( { _id: args._id } );
     },
 
     gamesOngoing: async () => {
@@ -99,15 +99,7 @@ const resolvers = {
     },
 
     newGameSession: async (parent, { user, opp }) => {
-      // if (user) {
-      //   const order = new Order({ products });
-
-      //   await User.findByIdAndUpdate(user.id, {
-      //     $push: { orders: order },
-      //   });
-
-      //   return order;
-      // }
+      if(user)
       return {nothing: '0'};
 
       //throw new AuthenticationError('Not logged in');

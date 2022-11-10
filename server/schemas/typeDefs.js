@@ -133,7 +133,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     userByName(username: String): User
-    userById: User
+    userById(_id: String!): User
     gamesOngoing: [GameSession]
     gamesByUserId: [GameSession]
     monsters: [Monster]
@@ -145,12 +145,11 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password:String!): Auth
-    login(username: String!, password:String!): Auth
-    inviteFriend(input: AddFriendInfo!): String
-    acceptFriend(input: AddFriendInfo!): String
-    newGameSession(input: NewGameInfo!): GameSession
-
+    addUser(username: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
+    inviteFriend(username: String!, newFriend: String!): String
+    acceptFriend(username: String!, newFriend: String!): String
+    newGameSession(username: String!, opponent: String): GameSession
   }
 `;
 
