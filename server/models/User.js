@@ -14,8 +14,7 @@ const userSchema = new Schema({
         minlength: 6,
     },
     friends: [ {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
+        type: String
     } ],
     friendInvites: [ {
         type: String,

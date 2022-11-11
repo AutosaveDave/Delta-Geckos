@@ -11,8 +11,8 @@ export const QUERY_PROFILES = gql`
 `;
 
 export const QUERY_SINGLE_PROFILE = gql`
-  query singleProfile($username: STRING!) {
-    userByName(username: $username) {
+  query singleProfile($userInfo: STRING!) {
+    userByName(userInfo: $userInfo) {
       username
       sentGameInvites
       sentFriendInvites
@@ -33,6 +33,22 @@ export const QUERY_ME = gql`
       _id
       name
       skills
+    }
+  }
+`;
+
+export const QUERY_MONSTERS = gql`
+  query monsters {
+    monsters {
+    _id: String
+    name: String
+    flavorText: String
+    attack: String
+    defense: String
+    image: String
+    background: String
+    color: String
+    texture: String
     }
   }
 `;

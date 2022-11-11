@@ -10,32 +10,49 @@ export const ADD_USER = gql`
     }
   }
 `;
-// export const ADD_SKILL = gql`
-//   mutation addSkill($profileId: ID!, $skill: String!) {
-//     addSkill(profileId: $profileId, skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+
+
+
 export const LOGIN_USER = gql`
-mutation login($username: String!, $password: String!) {
-  login(username: $username, password: $password) {
-    user {
-      username
-      _id
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      user {
+        username
+        _id
+      }
+      token
     }
-    token
   }
-}
 `;
-// export const REMOVE_SKILL = gql`
-//   mutation removeSkill($skill: String!) {
-//     removeSkill(skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+
+// Start a game
+export const START_GAME = gql`
+  mutation startGame($gameId: String!, $username: String!) {
+    startGame(gameId: $gameId, username: $username) {
+      pUsername: String
+      rewards: [String]
+      hand: [String]
+      played: String
+      discarded: [String]
+      opponentPlayed: String
+      rewardsInPlay: [String]
+      opponentRewards: [String]
+    }
+  }`
+
+export const PLAY_MONSTER = gql`
+  mutation playMonster($gameId: String!, $username: String!) {
+    playMonster(gameId: $gameId, $username: username) {
+      pUsername: String
+      rewards: [String]
+      hand: [String]
+      played: String
+      discarded: [String]
+      opponentPlayed: String
+      rewardsInPlay: [String]
+      opponentRewards: [String]
+    }
+  }
+  `
+
+// 

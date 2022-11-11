@@ -2,9 +2,9 @@ const { Schema, model } = require('mongoose');
 
 const playerSchema = new Schema({
 
-    // Player ID
-    pid: {
-        type: Schema.Types.ObjectId,
+    // Username
+    username: {
+        type: String,
         ref: 'User',
         required: true,
     },

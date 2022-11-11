@@ -9,11 +9,13 @@ const typeDefs = gql`
 
    
   type Player {
-    pid: ID!
+    username: String!
     rewards: [ID]
     hand: [ID]
     played: ID
     discarded: [ID]
+    survived: Boolean
+    won: Boolean
   }
 
   type PlayerView {
@@ -25,9 +27,17 @@ const typeDefs = gql`
     hand: [ID]
     played: ID
     discarded: [ID]
-    opponentPlayed: Boolean
+    opponentPlayed: String
     rewardsInPlay: [ID]
     opponentRewards: [ID]
+  }
+
+  type GameResults {
+    username: String!
+    goldWon: String
+    gameId: ID!
+    oppGoldWon: String
+    won: Boolean!
   }
 
   type RoundLog {
@@ -46,13 +56,14 @@ const typeDefs = gql`
     chatLog: [ChatLog]
     roundLog: [RoundLog]
     ongoing: Boolean
+    openGame: Boolean
   }
 
   type User {
     _id: ID!
     username: String!
     password: String!
-    friends: [ID]
+    friends: [String]
     friendInvites: [String]
     sentFriendInvites: [String]
     gameSessions: [ID]
@@ -137,11 +148,11 @@ const typeDefs = gql`
     gamesOngoing: [GameSession]
     gamesByUserId: [GameSession]
     monsters: [Monster]
-
     monsterMods: [MonsterMod]
     rewards: [Reward]
     combatMods: [CombatMod]
     playerView(gameId: ID!, _id:ID!): PlayerView
+    userGold(username: String!): String
   }
 
   type Mutation {
@@ -149,7 +160,11 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     inviteFriend(username: String!, newFriend: String!): String
     acceptFriend(username: String!, newFriend: String!): String
-    newGameSession(username: String!, opponent: String): GameSession
+    sendGameInvite(username: String!, otherUsername: String!): String
+    acceptGameInvite(username: String!, otherUsername:String!): ID
+    newOpenGameSession(username: String!): ID
+    joinOpenGameSession(username: String!, gameId: ID!): ID
+    dealHands(gameId: ID!): PlayerView
   }
 `;
 

@@ -1,10 +1,7 @@
+
 import React from 'react';
 import Hero from '../images/hero.png';
 import Typewriter from 'typewriter-effect';
-import "../style/Home.css";
-
-
-// import React from 'react'
 
 function Home() {
 return (
@@ -31,7 +28,8 @@ return (
 />
     </div>
 </div>
+
   );
- }
+}
 
 export default Home;
