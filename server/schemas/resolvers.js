@@ -230,6 +230,7 @@ const resolvers = {
           } ] }, 
           openGame: false 
         } );
+      
       if(openGame){
         return args.gameId;
       } else {
