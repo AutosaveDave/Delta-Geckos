@@ -27,7 +27,7 @@ const typeDefs = gql`
     hand: [ID]
     played: ID
     discarded: [ID]
-    opponentPlayed: Boolean
+    opponentPlayed: String
     rewardsInPlay: [ID]
     opponentRewards: [ID]
   }
