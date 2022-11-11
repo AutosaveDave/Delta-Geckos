@@ -37,7 +37,7 @@ const resolvers = {
     },
 
     monsters: async () => {
-      return Monster.find();
+      return Monster.find({});
     },
 
     rewards: async() => {
@@ -50,6 +50,10 @@ const resolvers = {
 
     combatMods: async () => {
       return CombatMod.find();
+    },
+    userGold: async (args) => {
+      //------------------------------------------------- NOT FINISHED
+      GameSession.find( { "player.username": args.username } ).select("") //----------------
     },
     
     playerView: async(parent, { gameId, playerId }, context ) => {
@@ -255,7 +259,18 @@ const resolvers = {
 
       return { token, user };
     },
+
+    dealHands: async (parent, args) => {
+      const game = await GameSession.updateOne(
+        { _id: args.gameId },
+        { $pull: {deck: {$slice: [0,4] } } },
+        {new: false}
+      );
+      return '0';
+    }
   },
+
+  
 };
 
 module.exports = resolvers;
