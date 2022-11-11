@@ -32,6 +32,14 @@ const typeDefs = gql`
     opponentRewards: [ID]
   }
 
+  type GameResults {
+    username: String!
+    goldWon: String
+    gameId: ID!
+    oppGoldWon: String
+    won: Boolean!
+  }
+
   type RoundLog {
     player: [Player]
     monsterDeck: [ID]
@@ -144,7 +152,7 @@ const typeDefs = gql`
     rewards: [Reward]
     combatMods: [CombatMod]
     playerView(gameId: ID!, _id:ID!): PlayerView
-    
+    userGold(username: String!): String
   }
 
   type Mutation {
@@ -156,6 +164,7 @@ const typeDefs = gql`
     acceptGameInvite(username: String!, otherUsername:String!): ID
     newOpenGameSession(username: String!): ID
     joinOpenGameSession(username: String!, gameId: ID!): ID
+    dealHands(gameId: ID!): PlayerView
   }
 `;
 
