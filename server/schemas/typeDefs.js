@@ -140,11 +140,11 @@ const typeDefs = gql`
     gamesOngoing: [GameSession]
     gamesByUserId: [GameSession]
     monsters: [Monster]
-
     monsterMods: [MonsterMod]
     rewards: [Reward]
     combatMods: [CombatMod]
     playerView(gameId: ID!, _id:ID!): PlayerView
+    
   }
 
   type Mutation {

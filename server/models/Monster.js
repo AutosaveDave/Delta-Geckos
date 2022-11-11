@@ -29,26 +29,22 @@ const MonsterSchema = new Schema( {
 
   image: {
     type: String,
-    required: true,
-    default: 0,
+    default: "default",
   },
 
   background: {
     type: String,
-    required: true,
-    default: 0,
+    default: "default",
   },
 
   color: {
     type: String,
-    required: true,
-    default: 0,
+    default: "default",
   },
 
   texture: {
     type: String,
-    required: true,
-    default: 0,
+    default: "default",
   },
 
 } );

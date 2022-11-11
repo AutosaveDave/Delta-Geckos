@@ -9,6 +9,7 @@ const {
 } = require("../models");
 
 const userData = require("./userData.json");
+const monsterData = require("./monsterData.json");
 
 db.once("open", async () => {
   // clean database
@@ -22,6 +23,7 @@ db.once("open", async () => {
   try {
     await User.deleteMany({});
     await User.create(userData);
+    await Monster.create(monsterData);
 
     console.log("all done!");
     process.exit(0);
