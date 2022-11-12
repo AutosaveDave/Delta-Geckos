@@ -1,0 +1,4 @@
+mongodb+srv://delta-geckos:r00tR00t@cluster0.dktogcu.mongodb.net/?retryWrites=true&w=majority
+
+
+mongodb+srv://<username>:<password>@cluster0.dktogcu.mongodb.net/?retryWrites=true&w=majority
