@@ -6,6 +6,11 @@ import { Paper } from "@mui/material";
 import PanToolIcon from "@mui/icons-material/PanTool";
 import Avatar from '@mui/material/Avatar';
 import "../style/Arena.css";
+import { makeStyles, makeStyls } from '@material-ui/core'
+
+const useStyles = makeStyles({
+  
+})
 
 function Arena() {
   return (
