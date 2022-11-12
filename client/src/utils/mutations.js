@@ -27,32 +27,32 @@ export const LOGIN_USER = gql`
 
 // Start a game
 export const START_GAME = gql`
-  mutation startGame($gameId: String!, $username: String!) {
-    startGame(gameId: $gameId, username: $username) {
-      pUsername: String
-      rewards: [String]
-      hand: [String]
-      played: String
-      discarded: [String]
-      opponentPlayed: String
-      rewardsInPlay: [String]
-      opponentRewards: [String]
+  mutation startGame($username: String!) {
+    startGame(username: $username) {
+      gameId
+      rewards
+      hand
+      played
+      discarded
+      opponentPlayed
+      rewardsInPlay
+      opponentRewards
     }
-  }`
+  }`;
 
 export const PLAY_MONSTER = gql`
-  mutation playMonster($gameId: String!, $username: String!) {
-    playMonster(gameId: $gameId, $username: username) {
-      pUsername: String
-      rewards: [String]
-      hand: [String]
-      played: String
-      discarded: [String]
-      opponentPlayed: String
-      rewardsInPlay: [String]
-      opponentRewards: [String]
+  mutation playMonster($gameId: String!, $monsterId: String!) {
+    playMonster(gameId: $gameId, monsterId: $monsterId) {
+      gameId
+      rewards
+      hand
+      played
+      discarded
+      opponentPlayed
+      rewardsInPlay
+      opponentRewards
     }
   }
-  `
+  `;
 
 // 

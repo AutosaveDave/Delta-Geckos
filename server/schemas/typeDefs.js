@@ -19,15 +19,12 @@ const typeDefs = gql`
   }
 
   type PlayerView {
-    pid: ID!
-    pUsername: String
-    oppId: ID
-    oppUsername: String
+    gameId: ID
     rewards: [ID]
     hand: [ID]
     played: ID
     discarded: [ID]
-    opponentPlayed: String
+    opponentPlayed: ID
     rewardsInPlay: [ID]
     opponentRewards: [ID]
   }
@@ -164,7 +161,9 @@ const typeDefs = gql`
     acceptGameInvite(username: String!, otherUsername:String!): ID
     newOpenGameSession(username: String!): ID
     joinOpenGameSession(username: String!, gameId: ID!): ID
+    startGame(username: String!): PlayerView
     dealHands(gameId: ID!): PlayerView
+    playMonster(gameId: ID!, monsterId: ID!): PlayerView
   }
 `;
 
