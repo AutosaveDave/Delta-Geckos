@@ -5,13 +5,14 @@ import Stack from "@mui/material/Stack";
 import "../style/Profile.css";
 import Auth from "../utils/auth";
 import { Navigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function UserInfo() {
   const isLoggedIn = Auth.loggedIn();
   console.log(isLoggedIn);
-  
-  if( !isLoggedIn) {
-    return <Navigate to="/LoginSignup"></Navigate>
+
+  if (!isLoggedIn) {
+    return <Navigate to="/LoginSignup"></Navigate>;
   }
   const userStuff = Auth.getUser();
   console.log(userStuff);
@@ -30,6 +31,9 @@ export default function UserInfo() {
 
         <Grid className="win_loss">wins/losses</Grid>
       </Grid>
+      <Button variant="outlined" href="/Arena">
+        Play New Game
+      </Button>
     </Grid>
   );
 }

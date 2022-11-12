@@ -10,23 +10,25 @@ const typeDefs = gql`
    
   type Player {
     username: String!
-    rewards: [ID]
-    hand: [ID]
-    played: ID
-    discarded: [ID]
+    rewards: [String]
+    hand: [String]
+    played: String
+    discarded: [String]
     survived: Boolean
     won: Boolean
+    selectMe: String!
+    who: String!
   }
 
   type PlayerView {
-    gameId: ID
-    rewards: [ID]
-    hand: [ID]
-    played: ID
-    discarded: [ID]
-    opponentPlayed: ID
-    rewardsInPlay: [ID]
-    opponentRewards: [ID]
+    gameId: String!
+    rewards: [String]
+    hand: [String]
+    played: String
+    discarded: [String]
+    opponentPlayed: String
+    rewardsInPlay: [String]
+    opponentRewards: [String]
   }
 
   type GameResults {
@@ -148,7 +150,7 @@ const typeDefs = gql`
     monsterMods: [MonsterMod]
     rewards: [Reward]
     combatMods: [CombatMod]
-    playerView(gameId: ID!, _id:ID!): PlayerView
+    playerView(gameId: String!): PlayerView
     userGold(username: String!): String
   }
 
@@ -162,8 +164,8 @@ const typeDefs = gql`
     newOpenGameSession(username: String!): ID
     joinOpenGameSession(username: String!, gameId: ID!): ID
     startGame(username: String!): PlayerView
-    dealHands(gameId: ID!): PlayerView
-    playMonster(gameId: ID!, monsterId: ID!): PlayerView
+    dealHands(gameId: String!): PlayerView
+    drawCards(gameId: String!): PlayerView
   }
 `;
 
