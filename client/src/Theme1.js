@@ -1,7 +1,8 @@
 import { createTheme } from '@mui/material/styles';
 
-const theme1 = createTheme({
+const themeOptions = {
   palette: {
+    type: 'dark',
     primary: {
       main: '#ff4400',
     },
@@ -9,6 +10,10 @@ const theme1 = createTheme({
       light: '#0066ff',
       main: '#0044ff',
       contrastText: '#ffcc00',
+    },
+    background: {
+      default: '#080808',
+      paper: '#fff4d9'
     },
     custom: {
       light: '#ffa726',
@@ -19,4 +24,11 @@ const theme1 = createTheme({
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },
-});
+  typography: {
+    fontFamily: 'Press Start 2P',
+    fontWeightLight: 300,
+  },
+};
+
+const Theme1 = createTheme(themeOptions);
+export default Theme1;

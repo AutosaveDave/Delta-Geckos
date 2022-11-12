@@ -40,15 +40,15 @@ export const QUERY_ME = gql`
 export const QUERY_MONSTERS = gql`
   query monsters {
     monsters {
-    _id: String
-    name: String
-    flavorText: String
-    attack: String
-    defense: String
-    image: String
-    background: String
-    color: String
-    texture: String
+    _id
+    name
+    flavorText
+    attack
+    defense
+    image
+    background
+    color
+    texture
     }
   }
 `;
