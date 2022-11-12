@@ -10,6 +10,11 @@ import { Navigate } from "react-router-dom";
 
 import Avatar from '@mui/material/Avatar';
 import "../style/Arena.css";
+import { makeStyles, makeStyls } from '@material-ui/core'
+
+const useStyles = makeStyles({
+  
+})
 
 
 function Arena() {
