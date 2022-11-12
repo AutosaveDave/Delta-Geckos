@@ -1,7 +1,8 @@
 .hero{
-
+    display: flex;
     background-size: cover;
     background-repeat: no-repeat;
+    background-image: url("client\src\images\hero1.png");
 }
 
 div{

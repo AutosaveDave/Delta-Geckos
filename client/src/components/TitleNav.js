@@ -16,9 +16,17 @@ const TitleNav = () => {
       </a>
       <ul>
         {Auth.loggedIn() ? (
-          <li className="logout active" onClick={logout}>
-            LOGOUT
-          </li>
+          <>
+            <li className="active">
+              <a href="./">HOME</a>
+            </li>
+            <li className="active">
+              <a href="./Profile">PROFILE</a>
+            </li>
+            <li className="logout active" onClick={logout}>
+              LOGOUT
+            </li>
+          </>
         ) : (
           <>
             <li className="active">
