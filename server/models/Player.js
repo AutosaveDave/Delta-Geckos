@@ -5,7 +5,6 @@ const playerSchema = new Schema({
     // Username
     username: {
         type: String,
-        ref: 'User',
         required: true,
     },
 
@@ -45,6 +44,19 @@ const playerSchema = new Schema({
     won: {
         type: Boolean,
     },
+
+    selectMe: {
+        type: String,
+        required: true,
+        default: " ",
+
+    },
+
+    who: {
+        type: String,
+        required: true,
+        default: "machine",
+    }
 
 });
 
